@@ -321,6 +321,7 @@ section {
         justify-content: center;
         align-items: center;
         transition: left 0.3s ease-in-out;
+        z-index: 1000; /* Garante que o menu fique acima do conteúdo, mas abaixo do botão 'X' */
     }
 
     .nav-links.active {
