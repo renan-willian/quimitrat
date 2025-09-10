@@ -165,24 +165,10 @@
         });
 
         // --- Esconde/Mostra o cabeçalho ao rolar a página ---
-
-        // Função para otimizar a performance do evento de rolagem (throttle)
-        function throttle(func, limit) {
-            let inThrottle;
-            return function() {
-                const args = arguments;
-                const context = this;
-                if (!inThrottle) {
-                    func.apply(context, args);
-                    inThrottle = true;
-                    setTimeout(() => inThrottle = false, limit);
-                }
-            }
-        }
-
         let lastScrollY = window.scrollY;
+        let ticking = false;
 
-        const handleScroll = () => {
+        function handleScroll() {
             const currentScrollY = window.scrollY;
 
             if (navLinks.classList.contains('active')) {
@@ -197,9 +183,17 @@
                 header.classList.remove('header--hidden');
             }
             lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
-        };
+        }
 
-        window.addEventListener('scroll', throttle(handleScroll, 100));
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    handleScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
     </script>
 
 </body>
