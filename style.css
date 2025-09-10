@@ -229,6 +229,12 @@ section {
     text-align: center; /* Centraliza ícones de larguras diferentes dentro do espaço fixo */
 }
 
+.contato-info a {
+    color: inherit; /* Herda a cor do texto pai (cinza claro) */
+    text-decoration: none; /* Remove o sublinhado */
+    cursor: text; /* Opcional: faz parecer texto normal */
+}
+
 .form-contato {
     width: 100%;
 }
