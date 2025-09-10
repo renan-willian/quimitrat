@@ -3,7 +3,7 @@
     --cor-fundo-escuro: #222222;
     --cor-fundo-secao: #333333;
     --cor-texto-principal: #f4f4f4;
-    --cor-destaque-brasa: #5dade2; /* Tom de azul claro/água */
+    --cor-destaque-brasa: #3498db; /* Tom de azul mais vibrante */
     --cor-texto-secundario: #cccccc;
 }
 
@@ -150,8 +150,8 @@ section {
 
 .btn:hover {
     transform: scale(1.05);
-    background-color: #e67e00; /* Um laranja um pouco mais escuro no hover */
-    box-shadow: 0 5px 15px rgba(93, 173, 226, 0.4);
+    background-color: #2980b9; /* Um azul mais escuro no hover */
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
 }
 
 /* --- Seções de Conteúdo --- */
@@ -185,7 +185,7 @@ section {
 
 .produto-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 140, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(52, 152, 219, 0.2);
 }
 
 .produto-card h3 {
