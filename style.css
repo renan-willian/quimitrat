@@ -327,10 +327,10 @@ section {
         left: 0; /* Mostra o menu ao adicionar a classe 'active' */
     }
 
-    .nav-links.active + .hamburger,
-    .nav-links.active ~ .hamburger {
+    .nav-active .hamburger {
         position: fixed; /* Mantém o botão 'X' fixo no canto */
         right: 15px;
+        top: 1rem; /* Alinha o 'X' verticalmente com o logo */
     }
 
     .nav-links li {

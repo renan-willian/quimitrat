@@ -140,11 +140,13 @@
         const hamburger = document.getElementById('hamburger');
         const hamburgerIcon = hamburger.querySelector('i');
         const navLinks = document.getElementById('nav-links');
+        const header = document.querySelector('.header');
 
         // Alterna a visibilidade do menu ao clicar no hambúrguer
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             // Troca o ícone entre hambúrguer e 'X'
+            document.body.classList.toggle('nav-active');
             if (navLinks.classList.contains('active')) {
                 hamburgerIcon.classList.remove('fa-bars');
                 hamburgerIcon.classList.add('fa-times');
@@ -157,6 +159,7 @@
         // Fecha o menu ao clicar em um link
         navLinks.addEventListener('click', () => {
             navLinks.classList.remove('active');
+            document.body.classList.remove('nav-active');
             hamburgerIcon.classList.remove('fa-times');
             hamburgerIcon.classList.add('fa-bars');
         });
