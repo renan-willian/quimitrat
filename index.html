@@ -16,8 +16,11 @@
     <header class="header">
         <div class="container navbar">
             <a href="#hero" class="logo">Quimi<span>trat</span></a>
-            <nav>
-                <ul class="nav-links">
+            <nav class="nav">
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="nav-links">
                     <li><a href="#sobre">Sobre Nós</a></li>
                     <li><a href="#produtos">Produtos</a></li>
                     <li><a href="#diferenciais">Diferenciais</a></li>
@@ -132,6 +135,16 @@
             <p>&copy; 2024 - Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        // Alterna a visibilidade do menu ao clicar no hambúrguer
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 
 </body>
 </html>
