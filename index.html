@@ -165,30 +165,41 @@
         });
 
         // --- Esconde/Mostra o cabeçalho ao rolar a página ---
+
+        // Função para otimizar a performance do evento de rolagem (throttle)
+        function throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            }
+        }
+
         let lastScrollY = window.scrollY;
 
-        window.addEventListener('scroll', () => {
+        const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            // Não faz nada se o menu mobile estiver aberto
             if (navLinks.classList.contains('active')) {
                 return;
             }
 
-            // Se estiver no topo, sempre mostra o cabeçalho
             if (currentScrollY === 0) {
                 header.classList.remove('header--hidden');
             } else if (currentScrollY > lastScrollY) {
-                // Rolando para baixo: esconde o cabeçalho
                 header.classList.add('header--hidden');
             } else {
-                // Rolando para cima: mostra o cabeçalho
                 header.classList.remove('header--hidden');
             }
-
-            // Atualiza a última posição de rolagem, tratando o "bounce" em mobile
             lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
-        });
+        };
+
+        window.addEventListener('scroll', throttle(handleScroll, 100));
     </script>
 
 </body>
