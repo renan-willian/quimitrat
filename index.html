@@ -165,34 +165,30 @@
         });
 
         // --- Esconde/Mostra o cabeçalho ao rolar a página ---
-        let lastScroll = 0;
-        let headerOffset = 0;
-        const headerHeight = header.offsetHeight;
+        let lastScrollY = window.scrollY;
+        const scrollThreshold = 5; // Distância mínima de rolagem para acionar o efeito
 
         window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            const direction = scrollY > lastScroll ? 'down' : 'up';
-            const scrollDelta = Math.abs(scrollY - lastScroll);
+            const currentScrollY = window.scrollY;
 
             if (navLinks.classList.contains('active')) {
                 return;
             }
 
-            if (direction === 'down' && scrollY > headerHeight) {
-                // Ao rolar para baixo, move o cabeçalho para cima
-                headerOffset = Math.max(-headerHeight, headerOffset - scrollDelta);
+            // Se a rolagem for mínima, não faz nada
+            if (Math.abs(currentScrollY - lastScrollY) < scrollThreshold) {
+                return;
+            }
+
+            if (currentScrollY > lastScrollY && currentScrollY > header.offsetHeight) {
+                // Rolando para baixo: esconde o cabeçalho
+                header.classList.add('header--hidden');
             } else {
-                // Ao rolar para cima, ou no topo, move o cabeçalho para baixo
-                headerOffset = Math.min(0, headerOffset + scrollDelta);
+                // Rolando para cima: mostra o cabeçalho
+                header.classList.remove('header--hidden');
             }
 
-            // Garante que o cabeçalho esteja totalmente visível no topo
-            if (scrollY <= headerHeight / 2) {
-                headerOffset = 0;
-            }
-
-            header.style.transform = `translateY(${headerOffset}px)`;
-            lastScroll = scrollY;
+            lastScrollY = currentScrollY;
         }, { passive: true });
     </script>
 

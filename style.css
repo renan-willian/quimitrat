@@ -62,6 +62,10 @@ section {
     transition: transform 0.3s ease-in-out;
 }
 
+.header--hidden {
+    transform: translateY(-100%);
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
