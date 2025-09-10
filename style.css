@@ -1,0 +1,280 @@
+/* --- Variáveis de Cor (Paleta do Carvão) --- */
+:root {
+    --cor-fundo-escuro: #222222;
+    --cor-fundo-secao: #333333;
+    --cor-texto-principal: #f4f4f4;
+    --cor-destaque-brasa: #ff8c00;
+    --cor-texto-secundario: #cccccc;
+}
+
+/* --- Reset e Estilos Globais --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--cor-fundo-escuro);
+    color: var(--cor-texto-principal);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px 0;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--cor-destaque-brasa);
+    margin-bottom: 1rem;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+}
+
+section {
+    padding: 60px 0;
+}
+
+/* --- Cabeçalho e Navegação --- */
+.header {
+    background-color: rgba(34, 34, 34, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--cor-fundo-secao);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--cor-destaque-brasa);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    color: var(--cor-texto-principal);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links li {
+    display: inline-block; /* Garante que a transformação funcione corretamente */
+}
+
+.nav-links a:hover {
+    color: var(--cor-destaque-brasa);
+    transform: translateY(-3px);
+}
+
+/* --- Seção Hero (Principal) --- */
+#hero {
+    background: linear-gradient(rgba(34, 34, 34, 0.7), rgba(34, 34, 34, 0.7)), url('https://images.unsplash.com/photo-1585162393069-a23335443a91?q=80&w=1974&auto=format&fit=crop') center/cover no-repeat;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    color: var(--cor-texto-secundario);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--cor-destaque-brasa);
+    color: var(--cor-fundo-escuro);
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background-color: #e67e00; /* Um laranja um pouco mais escuro no hover */
+    box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+}
+
+/* --- Seções de Conteúdo --- */
+#sobre, #produtos, #contato, #diferenciais {
+    background-color: var(--cor-fundo-secao);
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.produto-card {
+    background-color: var(--cor-fundo-escuro);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #444;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.produto-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 140, 0, 0.2);
+}
+
+.produto-card h3 {
+    font-size: 1.5rem;
+}
+
+/* --- Seção Diferenciais --- */
+#diferenciais {
+    background-color: var(--cor-fundo-escuro); /* Fundo diferente para destaque */
+}
+
+.diferencial-card {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.diferencial-card i {
+    font-size: 3rem;
+    color: var(--cor-destaque-brasa);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.diferencial-card:hover i {
+    transform: scale(1.2);
+}
+
+.diferencial-card h3 {
+    color: var(--cor-texto-principal);
+    font-size: 1.2rem;
+}
+
+/* --- Formulário de Contato --- */
+.contato-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: flex-start;
+}
+
+.contato-info p {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start; /* Alinha os itens no topo */
+    gap: 10px;
+    color: var(--cor-texto-secundario);
+}
+
+.contato-info i {
+    color: var(--cor-destaque-brasa);
+    line-height: 1.6;
+    width: 25px; /* Garante que todos os ícones ocupem o mesmo espaço */
+    text-align: center; /* Centraliza ícones de larguras diferentes dentro do espaço fixo */
+}
+
+.form-contato {
+    width: 100%;
+}
+
+.form-grupo {
+    margin-bottom: 1.5rem;
+}
+
+.form-grupo label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--cor-texto-secundario);
+}
+
+.form-grupo input,
+.form-grupo textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #555;
+    background-color: #444;
+    color: var(--cor-texto-principal);
+}
+
+.form-grupo input:focus,
+.form-grupo textarea:focus {
+    outline: none;
+    border-color: var(--cor-destaque-brasa);
+}
+
+/* --- Media Query para Responsividade --- */
+@media (max-width: 768px) {
+    .contato-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* --- Rodapé --- */
+.footer {
+    background-color: var(--cor-fundo-escuro);
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--cor-fundo-secao);
+    color: var(--cor-texto-secundario);
+}
