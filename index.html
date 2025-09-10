@@ -138,11 +138,46 @@
 
     <script>
         const hamburger = document.getElementById('hamburger');
+        const hamburgerIcon = hamburger.querySelector('i');
         const navLinks = document.getElementById('nav-links');
 
         // Alterna a visibilidade do menu ao clicar no hambúrguer
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            // Troca o ícone entre hambúrguer e 'X'
+            if (navLinks.classList.contains('active')) {
+                hamburgerIcon.classList.remove('fa-bars');
+                hamburgerIcon.classList.add('fa-times');
+            } else {
+                hamburgerIcon.classList.remove('fa-times');
+                hamburgerIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Fecha o menu ao clicar em um link
+        navLinks.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburgerIcon.classList.remove('fa-times');
+            hamburgerIcon.classList.add('fa-bars');
+        });
+
+        // --- Esconde/Mostra o cabeçalho ao rolar a página ---
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener("scroll", () => {
+            // Não faz nada se o menu mobile estiver aberto
+            if (navLinks.classList.contains('active')) {
+                return;
+            }
+
+            if (lastScrollY < window.scrollY) {
+                // Rolando para baixo: esconde o cabeçalho
+                header.classList.add("header--hidden");
+            } else {
+                // Rolando para cima: mostra o cabeçalho
+                header.classList.remove("header--hidden");
+            }
+            lastScrollY = window.scrollY;
         });
     </script>
 

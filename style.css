@@ -59,6 +59,11 @@ section {
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+}
+
+.header--hidden {
+    transform: translateY(-100%);
 }
 
 .navbar {
@@ -320,6 +325,12 @@ section {
 
     .nav-links.active {
         left: 0; /* Mostra o menu ao adicionar a classe 'active' */
+    }
+
+    .nav-links.active + .hamburger,
+    .nav-links.active ~ .hamburger {
+        position: fixed; /* Mantém o botão 'X' fixo no canto */
+        right: 15px;
     }
 
     .nav-links li {
