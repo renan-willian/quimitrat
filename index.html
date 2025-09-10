@@ -165,35 +165,35 @@
         });
 
         // --- Esconde/Mostra o cabeçalho ao rolar a página ---
-        let lastScrollY = window.scrollY;
-        let ticking = false;
+        let lastScroll = 0;
+        let headerOffset = 0;
+        const headerHeight = header.offsetHeight;
 
-        function handleScroll() {
-            const currentScrollY = window.scrollY;
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const direction = scrollY > lastScroll ? 'down' : 'up';
+            const scrollDelta = Math.abs(scrollY - lastScroll);
 
             if (navLinks.classList.contains('active')) {
                 return;
             }
 
-            if (currentScrollY === 0) {
-                header.classList.remove('header--hidden');
-            } else if (currentScrollY > lastScrollY) {
-                header.classList.add('header--hidden');
+            if (direction === 'down' && scrollY > headerHeight) {
+                // Ao rolar para baixo, move o cabeçalho para cima
+                headerOffset = Math.max(-headerHeight, headerOffset - scrollDelta);
             } else {
-                header.classList.remove('header--hidden');
+                // Ao rolar para cima, ou no topo, move o cabeçalho para baixo
+                headerOffset = Math.min(0, headerOffset + scrollDelta);
             }
-            lastScrollY = currentScrollY <= 0 ? 0 : currentScrollY;
-        }
 
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    handleScroll();
-                    ticking = false;
-                });
-                ticking = true;
+            // Garante que o cabeçalho esteja totalmente visível no topo
+            if (scrollY <= headerHeight / 2) {
+                headerOffset = 0;
             }
-        });
+
+            header.style.transform = `translateY(${headerOffset}px)`;
+            lastScroll = scrollY;
+        }, { passive: true });
     </script>
 
 </body>

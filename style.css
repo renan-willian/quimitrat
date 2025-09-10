@@ -3,7 +3,7 @@
     --cor-fundo-escuro: #222222;
     --cor-fundo-secao: #333333;
     --cor-texto-principal: #f4f4f4;
-    --cor-destaque-brasa: #ff8c00;
+    --cor-destaque-brasa: #5dade2; /* Tom de azul claro/água */
     --cor-texto-secundario: #cccccc;
 }
 
@@ -60,10 +60,6 @@ section {
     top: 0;
     z-index: 1000;
     transition: transform 0.3s ease-in-out;
-}
-
-.header--hidden {
-    transform: translateY(-100%);
 }
 
 .navbar {
@@ -155,7 +151,7 @@ section {
 .btn:hover {
     transform: scale(1.05);
     background-color: #e67e00; /* Um laranja um pouco mais escuro no hover */
-    box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+    box-shadow: 0 5px 15px rgba(93, 173, 226, 0.4);
 }
 
 /* --- Seções de Conteúdo --- */
